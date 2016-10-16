@@ -7,7 +7,7 @@ let direction2class = {
 
 const ListView = (props) => {
   let direction = props.direction || 'vertical'
-  let classes = `flex ${direction2class[direction]}`
+  let classes = `list-view flex ${direction2class[direction]} ${props.loading ? 'loading' : null}`
 
   return (
     <div className={classes}>{props.children}</div>
