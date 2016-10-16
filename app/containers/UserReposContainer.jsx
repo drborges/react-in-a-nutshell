@@ -1,8 +1,6 @@
 import React from 'react'
 import Github from 'app/services/Github'
-import ListView from 'app/components/ListView'
-import FilterView from 'app/components/FilterView'
-import PaginateView from 'app/components/PaginateView'
+import UserReposView from 'app/components/UserReposView'
 
 class UserReposContainer extends React.Component {
   state = { page: 1, repos: [], filterTerm: '', fetching: false }
@@ -26,33 +24,16 @@ class UserReposContainer extends React.Component {
   }
 
   render() {
-    const classes = `flex flex-column ${this.props.className}`
-    const repoItems = this.state.repos.
-      filter(repo => repo.name.startsWith(this.state.filterTerm)).
-      map((repo, i) => <span key={i}>{repo.name}</span>)
-
     return (
-      <div className={classes}>
-        <PaginateView
-          page={this.state.page}
-          onNextPage={this.loadPage}
-          onPreviousPage={this.loadPage}
-          onGotoPage={this.loadPage} />
-
-        <FilterView
-          tabIndex={this.props.tabIndex}
-          onFilter={this.filterPage} />
-
-        <ListView
-          direction="vertical"
-          loading={this.state.fetching}>{repoItems}</ListView>
-
-        <PaginateView
-          page={this.state.page}
-          onNextPage={this.loadPage}
-          onPreviousPage={this.loadPage}
-          onGotoPage={this.loadPage} />
-      </div>
+      <UserReposView
+        repos={this.state.repos}
+        tabIndex={this.props.tabIndex}
+        loading={this.state.fetching}
+        page={this.state.page}
+        filterTerm={this.state.filterTerm}
+        onLoadPage={this.loadPage}
+        onFilterPage={this.filterPage}
+        className={this.props.className} />
     )
   }
 }
