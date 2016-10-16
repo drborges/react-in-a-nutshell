@@ -14,23 +14,22 @@ const UserReposView = (props) => {
     <div className={classes}>
       <PaginateView
         page={props.page}
-        onNextPage={props.onLoadPage}
-        onPreviousPage={props.onLoadPage}
-        onGotoPage={props.onLoadPage} />
+        onNextPage={props.onLoad}
+        onPreviousPage={props.onLoad}
+        onGotoPage={props.onLoad} />
 
       <FilterView
         tabIndex={props.tabIndex}
-        onFilter={props.onFilterPage} />
+        onFilter={props.onFilter} />
 
       <ListView
-        direction="vertical"
-        loading={props.fetching}>{repoItems}</ListView>
+        loading={props.loading}>{repoItems}</ListView>
 
       <PaginateView
         page={props.page}
-        onNextPage={props.onLoadPage}
-        onPreviousPage={props.onLoadPage}
-        onGotoPage={props.onLoadPage} />
+        onNextPage={props.onLoad}
+        onPreviousPage={props.onLoad}
+        onGotoPage={props.onLoad} />
     </div>
   )
 }

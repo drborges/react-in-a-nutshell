@@ -31,8 +31,8 @@ class UserReposContainer extends React.Component {
         loading={this.state.fetching}
         page={this.state.page}
         filterTerm={this.state.filterTerm}
-        onLoadPage={this.loadPage}
-        onFilterPage={this.filterPage}
+        onLoad={this.loadPage}
+        onFilter={this.filterPage}
         className={this.props.className} />
     )
   }
