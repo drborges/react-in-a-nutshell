@@ -7,8 +7,8 @@ import 'app/assets/css/styles.scss'
 
 const body =
   <div className="flex flex-row">
-    <UserReposContainer username="evancz" tabIndex="1" className="margin-sm" />
-    <UserReposContainer username="drborges" tabIndex="2" className="margin-sm" />
+    <UserReposContainer owner="evancz" tabIndex="1" className="margin-sm" />
+    <UserReposContainer owner="drborges" tabIndex="2" className="margin-sm" />
   </div>
 
 ReactDOM.render(body, document.getElementById('app'))

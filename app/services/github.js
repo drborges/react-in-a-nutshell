@@ -1,4 +1,5 @@
 class Github {
+  static url = 'https://github.com'
   static endpoint = 'https://api.github.com'
 
   static async repos(username, page = 1) {

@@ -23,7 +23,7 @@ class UserReposContainer extends React.Component {
     let lastState = { ...this.state }
     this.setState({ page, loading: true })
 
-    Github.repos(this.props.username, page).
+    Github.repos(this.props.owner, page).
       then(repos => this.setState({ repos })).
       catch(err => this.setState(lastState)).
       then(() => this.setState({ loading: false }))
