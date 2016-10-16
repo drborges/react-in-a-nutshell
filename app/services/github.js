@@ -1,9 +1,3 @@
-function Testable(target) {
-  target.isTestable = true
-  return target
-}
-
-@Testable
 class Github {
   static endpoint = 'https://api.github.com'
 
