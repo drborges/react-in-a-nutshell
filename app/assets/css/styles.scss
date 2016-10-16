@@ -25,13 +25,37 @@ body * {
   justify-content: space-around;
 }
 
-.list-view.loading {
-  opacity: 0.1;
+::placeholder {
+  color: #eee;
 }
 
-.list-view > * {
-  padding: 1em;
-  border-bottom: thin solid #eee;
+.filter-view {
+  color: #999;
+  font-size: 1em;
+  padding: 10px;
+  border: thin solid #eee;
+  border-radius: 5px;
+  outline: none;
+  box-shadow: 0 0 0 #eee;
+  transition: box-shadow .5s ease;
+
+  &:focus {
+    box-shadow: 0 0 10px #ddd;
+  }
+}
+
+.list-view {
+  opacity: 1;
+  transition: opacity .1s ease;
+
+  &.loading {
+    opacity: 0.1;
+  }
+
+  & > * {
+    padding: 1em;
+    border-bottom: thin solid #eee;
+  }
 }
 
 .paginate-view {
