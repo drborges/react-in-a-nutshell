@@ -1,7 +1,7 @@
 body * {
-  font-family: 'Source Sans Pro', Helvetica, Arial ,sans-serif;
-  font-size: 1em;
-  vertical-align: middle;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  color: #444;
+  font-size: 14px;
 }
 
 h1 {
@@ -24,17 +24,25 @@ h1 {
   flex-flow: column;
 }
 
+.flex-wrap {
+  flex-wrap: wrap;
+}
+
+.flex-grow-even {
+  flex-grow: 1;
+  flex-basis: 0;
+}
+
 .flex-center {
   align-items: center;
   justify-content: space-around;
 }
 
 ::placeholder {
-  color: #eee;
+  color: #666;
 }
 
 .filter-view {
-  color: #999;
   font-size: 1em;
   padding: 10px;
   border: thin solid #eee;
@@ -49,12 +57,10 @@ h1 {
 }
 
 .list-view {
-  opacity: 1;
   filter: blur(0);
-  transition: opacity .1s ease, filter .1s ease;
+  transition: filter .1s ease;
 
   &.loading {
-    opacity: 0.1;
     filter: blur(3px);
   }
 
@@ -83,15 +89,52 @@ h1 {
   & .paginate-item:hover,
   & .paginate-prev:hover,
   & .paginate-next:hover {
-    background-color: #337ab7;
     border-color: #2e6da4;
     cursor: pointer;
-    color: #fff;
+    color: #999;
+  }
+}
+
+.repo-info-view {
+  text-decoration: none;
+  border-radius: 3px;
+
+  &:hover {
+    background-color: #eee;
   }
 
-  .paginate-item.activated {
-    background-color: #286090;
-    border-color: #204d74;
-    color: #fff;
+  .fork-icon-view,
+  .star-icon-view {
+    fill: currentColor;
+  }
+
+  .repo-name {
+    font-size: 16px;
+  }
+
+  .repo-description {
+    font-size: 12px;
+    min-height: 20px;
+    color: #999;
+  }
+
+  .repo-stats {
+    & * {
+      font-size: 12px;
+    }
+
+    & > * {
+      padding-right: 10px;
+    }
+
+    & .label-icon {
+      padding-right: 5px;
+    }
+  }
+
+  .repo-name,
+  .repo-stats,
+  .repo-description {
+    margin: 5px;
   }
 }

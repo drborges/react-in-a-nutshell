@@ -3,13 +3,21 @@ import React from 'react'
 import Github from 'app/services/Github'
 import ListView from 'app/components/ListView'
 import FilterView from 'app/components/FilterView'
+import RepoInfoView from 'app/components/RepoInfoView'
 import PaginateView from 'app/components/PaginateView'
 
 const UserReposView = ({ owner, repos, page, filterTerm, tabIndex, loading, className, onLoad, onFilter }) => {
   const classes = `flex flex-column ${className}`
-  const repoItems = repos.
-    filter(repo => repo.name.startsWith(filterTerm)).
-    map((repo, i) => <span key={i}>{repo.name}</span>)
+  const visibleRepos = repos.filter(repo => repo.name.startsWith(filterTerm))
+  const repoItems = visibleRepos.map((repo, i) =>
+    <RepoInfoView
+      key={i}
+      name={repo.name}
+      description={repo.description}
+      url={repo.html_url}
+      forks={repo.forks_count}
+      stars={repo.stargazers_count} />
+  )
 
   return (
     <div className={classes}>

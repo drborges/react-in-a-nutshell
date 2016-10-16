@@ -9,7 +9,7 @@ const PaginateView = ({ page, onNextPage, onPreviousPage, onGotoPage }) => {
     <div className="paginate-view flex flex-row flex-center">
       <div>
         <button className="paginate-prev" onClick={prev}>&#10094;</button>
-        <button className='paginate-item' onClick={goto(page)}>{page}</button>
+        <button className='paginate-item' onClick={goto(page)}>{`Page ${page}`}</button>
         <button className="paginate-next" onClick={next}>&#10095;</button>
       </div>
     </div>
