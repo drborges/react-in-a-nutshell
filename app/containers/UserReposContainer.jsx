@@ -5,7 +5,7 @@ import UserReposView from 'app/components/UserReposView'
 // Creates a better user experience by initializing the list with fake
 // data until the actual data is retrieved and the list populated.
 // The opacity + blur css effects applied to the list while loading data
-// help making this experience a bit smoother. 
+// help making this experience a bit smoother.
 const initialEmptyState =
   Array.from(new Array(15).keys()).map(() => {
     return { name: 'Fake Repository' }
@@ -14,19 +14,19 @@ const initialEmptyState =
 class UserReposContainer extends React.Component {
   state = {
     page: 1,
-    repos: initialEmptyState,
+    loading: false,
     filterTerm: '',
-    fetching: false
+    repos: initialEmptyState,
   }
 
   loadPage = (page) => {
     let lastState = { ...this.state }
-    this.setState({ page, fetching: true })
+    this.setState({ page, loading: true })
 
     Github.repos(this.props.username, page).
       then(repos => this.setState({ repos })).
       catch(err => this.setState(lastState)).
-      then(() => this.setState({ fetching: false }))
+      then(() => this.setState({ loading: false }))
   }
 
   filterPage = (term) => {
@@ -40,14 +40,10 @@ class UserReposContainer extends React.Component {
   render() {
     return (
       <UserReposView
-        repos={this.state.repos}
-        tabIndex={this.props.tabIndex}
-        loading={this.state.fetching}
-        page={this.state.page}
-        filterTerm={this.state.filterTerm}
+        {...this.state}
+        {...this.props}
         onLoad={this.loadPage}
-        onFilter={this.filterPage}
-        className={this.props.className} />
+        onFilter={this.filterPage} />
     )
   }
 }
