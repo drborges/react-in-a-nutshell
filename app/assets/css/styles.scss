@@ -46,10 +46,12 @@ body * {
 
 .list-view {
   opacity: 1;
-  transition: opacity .1s ease;
+  filter: blur(0);
+  transition: opacity .1s ease, filter .1s ease;
 
   &.loading {
     opacity: 0.1;
+    filter: blur(3px);
   }
 
   & > * {
