@@ -6,9 +6,10 @@ import UserReposContainer from 'app/containers/UserReposContainer'
 import 'app/assets/css/styles.scss'
 
 const body =
-  <div className="flex flex-row">
-    <UserReposContainer owner="evancz" tabIndex="1" className="margin-sm" />
-    <UserReposContainer owner="drborges" tabIndex="2" className="margin-sm" />
+  <div className="flex flex-row flex-wrap">
+    <UserReposContainer owner="evancz" tabIndex="1" className="margin-sm flex-grow-even" />
+    <UserReposContainer owner="powerhome" tabIndex="2" className="margin-sm flex-grow-even" />
+    <UserReposContainer owner="drborges" tabIndex="3" className="margin-sm flex-grow-even" />
   </div>
 
 ReactDOM.render(body, document.getElementById('app'))
