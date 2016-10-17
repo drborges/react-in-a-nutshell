@@ -6,7 +6,7 @@ import FilterView from 'app/components/FilterView'
 import RepoInfoView from 'app/components/RepoInfoView'
 import PaginateView from 'app/components/PaginateView'
 
-const UserReposView = ({ owner, repos, page, filterTerm, tabIndex, loading, className, onLoad, onFilter }) => {
+const UserReposView = ({ owner, repos, page, mode, filterTerm, tabIndex, loading, className, onLoad, onFilter, onChangeMode }) => {
   const classes = `flex flex-column ${className}`
   const visibleRepos = repos.filter(repo => repo.name.startsWith(filterTerm))
   const repoItems = visibleRepos.map((repo, i) =>
@@ -36,7 +36,9 @@ const UserReposView = ({ owner, repos, page, filterTerm, tabIndex, loading, clas
         onFilter={onFilter} />
 
       <ListView
-        loading={loading}>{repoItems}</ListView>
+        mode={mode}
+        loading={loading}
+        onChangeMode={onChangeMode}>{repoItems}</ListView>
 
       <PaginateView
         page={page}

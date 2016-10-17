@@ -13,6 +13,7 @@ const initialEmptyState =
 
 class UserReposContainer extends React.Component {
   state = {
+    mode: 'grid',
     page: 1,
     loading: false,
     filterTerm: '',
@@ -29,8 +30,12 @@ class UserReposContainer extends React.Component {
       then(() => this.setState({ loading: false }))
   }
 
-  filterPage = (term) => {
-    this.setState({ filterTerm: term })
+  filterPage = (filterTerm) => {
+    this.setState({ filterTerm })
+  }
+
+  changeMode = (mode) => {
+    this.setState({ mode })
   }
 
   componentDidMount() {
@@ -42,6 +47,7 @@ class UserReposContainer extends React.Component {
       <UserReposView
         {...this.state}
         {...this.props}
+        onChangeMode={this.changeMode}
         onLoad={this.loadPage}
         onFilter={this.filterPage} />
     )

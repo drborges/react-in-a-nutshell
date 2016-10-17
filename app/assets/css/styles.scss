@@ -60,13 +60,33 @@ h1 {
   filter: blur(0);
   transition: filter .1s ease;
 
-  &.loading {
+  & .list-view-items.loading {
     filter: blur(3px);
   }
 
-  & > * {
-    padding: 1em;
-    border-bottom: thin solid #eee;
+  .list-view-items .repo-info-view {
+    padding: 1.1em;
+  }
+
+  .list-view-items.flex-row.flex-wrap > .repo-info-view {
+    width: 250px;
+    min-height: 110px;
+  }
+
+  .arrange-options {
+    padding: 7px;
+    text-align: right;
+
+    .btn {
+      margin: 5px;
+      color: #eee;
+    }
+
+    .btn:hover,
+    .btn.activated {
+      cursor: pointer;
+      color: inherit;
+    }
   }
 }
 
