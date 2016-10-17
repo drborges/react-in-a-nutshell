@@ -7,6 +7,9 @@ const ListView = ({ mode, loading, children, onChangeMode }) => {
 
   const changeToListMode = () => { onChangeMode('list') }
   const changeToGridMode = () => { onChangeMode('grid') }
+  const listItems = children.length > 0 ?
+    <div className={classes}>{children}</div> :
+    <div className="empty-list"><div>Empty list.</div></div>
 
   return (
     <div className="list-view">
@@ -14,7 +17,7 @@ const ListView = ({ mode, loading, children, onChangeMode }) => {
         <i className={`btn fa fa-th-list ${mode == 'list' ? 'activated' : ''}`} onClick={changeToListMode}></i>
         <i className={`btn fa fa-th ${mode == 'grid' ? 'activated' : ''}`} onClick={changeToGridMode}></i>
       </div>
-      <div className={classes}>{children}</div>
+      {listItems}
     </div>
   )
 }

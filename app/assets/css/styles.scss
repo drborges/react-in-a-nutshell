@@ -60,6 +60,15 @@ h1 {
   filter: blur(0);
   transition: filter .1s ease;
 
+  .empty-list {
+    border-radius: 3px;
+    background-color: #eee;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 50px;
+  }
+
   & .list-view-items.loading {
     filter: blur(3px);
   }
