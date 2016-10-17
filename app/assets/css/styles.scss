@@ -56,6 +56,15 @@ h1 {
   }
 }
 
+.owner-info-view {
+  input {
+    border: none;
+    border-bottom: thin solid #eee;
+    padding: 5px;
+    outline: none;
+  }
+}
+
 .list-view {
   filter: blur(0);
   transition: filter .1s ease;

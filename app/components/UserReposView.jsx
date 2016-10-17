@@ -5,8 +5,9 @@ import ListView from 'app/components/ListView'
 import FilterView from 'app/components/FilterView'
 import RepoInfoView from 'app/components/RepoInfoView'
 import PaginateView from 'app/components/PaginateView'
+import OwnerInfoView from 'app/components/OwnerInfoView'
 
-const UserReposView = ({ owner, repos, page, mode, filterTerm, tabIndex, loading, className, onLoad, onFilter, onChangeMode }) => {
+const UserReposView = ({ owner, repos, page, mode, filterTerm, tabIndex, loading, className, onLoad, onFilter, onChangeMode, onChangeOwner }) => {
   const classes = `flex flex-column ${className}`
   const visibleRepos = repos.filter(repo => repo.name.startsWith(filterTerm))
   const repoItems = visibleRepos.map((repo, i) =>
@@ -21,9 +22,9 @@ const UserReposView = ({ owner, repos, page, mode, filterTerm, tabIndex, loading
 
   return (
     <div className={classes}>
-      <h1>
-        {'Owner: '}<a href={`${Github.url}/${owner}`} target="_blank">{owner}</a>
-      </h1>
+      <OwnerInfoView
+        owner={owner}
+        onChangeOwner={onChangeOwner} />
 
       <PaginateView
         page={page}

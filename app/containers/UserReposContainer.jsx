@@ -18,16 +18,19 @@ class UserReposContainer extends React.Component {
     loading: false,
     filterTerm: '',
     repos: initialEmptyState,
+    owner: this.props.owner,
   }
 
   loadPage = (page) => {
     let lastState = { ...this.state }
     this.setState({ page, loading: true })
 
-    Github.repos(this.props.owner, page).
-      then(repos => this.setState({ repos })).
-      catch(err => this.setState(lastState)).
-      then(() => this.setState({ loading: false }))
+    Github.repos(this.state.owner, page).
+      then(repos => this.setState({ repos, loading: false })).
+      catch(err => {
+        let isLoading = (lastState.repos == initialEmptyState)
+        this.setState({...lastState, loading: isLoading })
+      })
   }
 
   filterPage = (filterTerm) => {
@@ -38,6 +41,12 @@ class UserReposContainer extends React.Component {
     this.setState({ mode })
   }
 
+  changeOwner = (owner) => {
+    this.setState({ owner }, () => {
+      this.loadPage(1)
+    })
+  }
+
   componentDidMount() {
     this.loadPage(1)
   }
@@ -46,7 +55,9 @@ class UserReposContainer extends React.Component {
     return (
       <UserReposView
         {...this.state}
-        {...this.props}
+        tabIndex={this.props.tabIndex}
+        className={this.props.className}
+        onChangeOwner={this.changeOwner}
         onChangeMode={this.changeMode}
         onLoad={this.loadPage}
         onFilter={this.filterPage} />
