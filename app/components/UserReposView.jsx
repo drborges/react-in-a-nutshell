@@ -6,6 +6,7 @@ import FilterView from 'app/components/FilterView'
 import RepoInfoView from 'app/components/RepoInfoView'
 import PaginateView from 'app/components/PaginateView'
 import OwnerInfoView from 'app/components/OwnerInfoView'
+import ListModeSwitcherView from 'app/components/ListModeSwitcherView'
 
 const UserReposView = ({ owner, repos, page, mode, filterTerm, tabIndex, loading, className, onLoad, onFilter, onChangeMode, onChangeOwner }) => {
   const classes = `flex flex-column ${className}`
@@ -36,10 +37,13 @@ const UserReposView = ({ owner, repos, page, mode, filterTerm, tabIndex, loading
         tabIndex={tabIndex}
         onFilter={onFilter} />
 
+      <ListModeSwitcherView
+        mode={mode}
+        onChangeMode={onChangeMode} />
+
       <ListView
         mode={mode}
-        loading={loading}
-        onChangeMode={onChangeMode}>{repoItems}</ListView>
+        loading={loading}>{repoItems}</ListView>
 
       <PaginateView
         page={page}

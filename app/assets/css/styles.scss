@@ -65,9 +65,29 @@ h1 {
   }
 }
 
+.list-mode-switcher-view {
+  padding: 7px;
+  text-align: right;
+
+  .btn {
+    margin: 5px;
+    color: #eee;
+  }
+
+  .btn:hover,
+  .btn.activated {
+    cursor: pointer;
+    color: inherit;
+  }
+}
+
 .list-view {
   filter: blur(0);
   transition: filter .1s ease;
+
+  .list-view-items {
+    justify-content: space-between;
+  }
 
   .empty-list {
     border-radius: 3px;
@@ -89,22 +109,6 @@ h1 {
   .list-view-items.flex-row.flex-wrap > .repo-info-view {
     width: 250px;
     min-height: 110px;
-  }
-
-  .arrange-options {
-    padding: 7px;
-    text-align: right;
-
-    .btn {
-      margin: 5px;
-      color: #eee;
-    }
-
-    .btn:hover,
-    .btn.activated {
-      cursor: pointer;
-      color: inherit;
-    }
   }
 }
 
