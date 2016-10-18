@@ -6,45 +6,39 @@ import UserReposView from 'app/components/UserReposView'
 // data until the actual data is retrieved and the list populated.
 // The opacity + blur css effects applied to the list while loading data
 // help making this experience a bit smoother.
-const initialEmptyState =
+const initialFakeReposList =
   Array.from(new Array(15).keys()).map(() => {
     return { name: 'Fake Repository' }
   })
 
-class UserReposContainer extends React.Component {
-  state = {
+const initialState = (owner) => {
+  return {
     mode: 'grid',
     page: 1,
     loading: false,
     filterTerm: '',
-    repos: initialEmptyState,
-    owner: this.props.owner,
+    repos: initialFakeReposList,
+    owner: owner,
   }
+}
+
+class UserReposContainer extends React.Component {
+  state = initialState(this.props.owner)
+
+  filterPage = (filterTerm) => this.setState({ filterTerm })
+  changeMode = (mode) => this.setState({ mode })
+  changeOwner = (owner) => this.setState({ owner }, () => {
+    this.loadPage(1)
+  })
 
   loadPage = (page) => {
     let lastState = { ...this.state }
-    this.setState({ page, loading: true })
+    let isInitialState = lastState.repos == initialFakeReposList
 
+    this.setState({ page, loading: true })
     Github.repos(this.state.owner, page).
       then(repos => this.setState({ repos, loading: false })).
-      catch(err => {
-        let isLoading = (lastState.repos == initialEmptyState)
-        this.setState({...lastState, loading: isLoading })
-      })
-  }
-
-  filterPage = (filterTerm) => {
-    this.setState({ filterTerm })
-  }
-
-  changeMode = (mode) => {
-    this.setState({ mode })
-  }
-
-  changeOwner = (owner) => {
-    this.setState({ owner }, () => {
-      this.loadPage(1)
-    })
+      catch(err => this.setState({...lastState, loading: isInitialState}))
   }
 
   componentDidMount() {
