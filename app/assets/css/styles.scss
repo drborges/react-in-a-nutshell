@@ -1,3 +1,8 @@
+body {
+  background-color: #eee;
+  margin: 0;
+}
+
 body * {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
   color: #444;
@@ -9,7 +14,7 @@ h1 {
 }
 
 .margin-sm {
-  margin: 10px;
+  margin: 5px;
 }
 
 .flex {
@@ -42,11 +47,18 @@ h1 {
   color: #666;
 }
 
+.user-repo-view {
+  background-color: #fff;
+  border-radius: 3px;
+  padding: 10px;
+  box-shadow: 0 0 5px #ddd;
+}
+
 .filter-view {
   font-size: 1em;
   padding: 10px;
   border: thin solid #eee;
-  border-radius: 5px;
+  border-radius: 3px;
   outline: none;
   box-shadow: 0 0 0 #eee;
   transition: box-shadow .5s ease;
@@ -59,6 +71,8 @@ h1 {
 .owner-info-view {
   input {
     border: none;
+    font-size: 16px;
+    text-align: center;
     border-bottom: thin solid #eee;
     padding: 5px;
     outline: none;
@@ -123,7 +137,6 @@ h1 {
     border: none;
     outline: none;
     background-color: transparent;
-    border-radius: 5px;
     padding: 5px 15px;
     margin: 2px;
   }

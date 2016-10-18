@@ -9,7 +9,7 @@ import OwnerInfoView from 'app/components/OwnerInfoView'
 import ListModeSwitcherView from 'app/components/ListModeSwitcherView'
 
 const UserReposView = ({ owner, repos, page, mode, filterTerm, tabIndex, loading, className, onLoad, onFilter, onChangeMode, onChangeOwner }) => {
-  const classes = `flex flex-column ${className}`
+  const classes = `user-repo-view flex flex-column ${className}`
   const visibleRepos = repos.filter(repo => repo.name.startsWith(filterTerm))
   const repoItems = visibleRepos.map((repo, i) =>
     <RepoInfoView
