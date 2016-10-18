@@ -2,7 +2,7 @@ import React from 'react'
 
 const ListView = ({ mode, loading, children, onChangeMode }) => {
   let listModeClasses = 'flex flex-column'
-  let gridModeClasses = 'flex flex-row flex-wrap flex-center'
+  let gridModeClasses = 'flex flex-row flex-wrap'
   let classes = `list-view-items ${loading ? 'loading' : ''} ${mode == 'list' ? listModeClasses : gridModeClasses}`
 
   const changeToListMode = () => { onChangeMode('list') }
