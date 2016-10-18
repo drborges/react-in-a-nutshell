@@ -43,6 +43,17 @@ h1 {
   justify-content: space-around;
 }
 
+.flex-list {
+  @extend .flex;
+  @extend .flex-column;
+}
+
+.flex-grid {
+  @extend .flex;
+  @extend .flex-row;
+  @extend .flex-wrap;
+}
+
 ::placeholder {
   color: #666;
 }
@@ -99,7 +110,7 @@ h1 {
   filter: blur(0);
   transition: filter .1s ease;
 
-  .list-view-items {
+  & > * {
     justify-content: space-between;
   }
 
@@ -112,17 +123,17 @@ h1 {
     height: 50px;
   }
 
-  & .list-view-items.loading {
+  .loading {
     filter: blur(3px);
   }
 
-  .list-view-items .repo-info-view {
+  .repo-info-view {
     padding: 1.1em;
+    min-height: 110px;
   }
 
-  .list-view-items.flex-row.flex-wrap > .repo-info-view {
+  .flex-grid .repo-info-view {
     width: 250px;
-    min-height: 110px;
   }
 }
 
