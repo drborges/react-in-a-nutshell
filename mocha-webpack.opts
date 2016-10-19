@@ -1,5 +1,0 @@
---colors
---reporter spec
---require test/bootstrap.js
---webpack-config webpack.config.js
-test/**/*.spec.js
