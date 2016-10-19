@@ -11,6 +11,10 @@ $ npm install
 $ npm start
 ```
 
+# The Virtual DOM
+
+![Virtual DOM](http://html5facil.com/wp-content/uploads/2016/01/TechTalk_BAnderson_11052014_Image7.png)
+
 # Learning Resources
 
 1. [React Official Docs](https://facebook.github.io/react)
