@@ -5,6 +5,7 @@ var HtmlWebpackPlugin = require('html-webpack-plugin')
   , postcssUrl = require('postcss-url')
   , autoprefixer = require('autoprefixer')
   , postcssImport = require('postcss-import')
+  , ifProduction = process.env.NODE_ENV == 'production'
 
 module.exports = {
   entry: ['babel-polyfill', './app/index.js'],
@@ -35,7 +36,7 @@ module.exports = {
     hot: true,
     stats: 'errors-only'
   },
-  devtool: 'eval-source-map',
+  devtool: ifProduction ? 'cheap-module-source-map' : 'eval-source-map',
   module: {
     loaders: [
       {
