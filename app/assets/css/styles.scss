@@ -109,31 +109,28 @@ h1 {
 .list-view {
   filter: blur(0);
   transition: filter .1s ease;
+  justify-content: space-between;
 
-  & > * {
-    justify-content: space-between;
-  }
-
-  .empty-list {
-    border-radius: 3px;
-    background-color: #eee;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 50px;
-  }
-
-  .loading {
+  &.loading {
     filter: blur(3px);
   }
 
-  .repo-info-view {
-    padding: 1.1em;
-    min-height: 110px;
+  &.flex-grid > * {
+    width: 250px;
   }
 
-  .flex-grid .repo-info-view {
-    width: 250px;
+  & > * {
+    padding: 10px;
+  }
+
+  .empty-list {
+    display: flex;
+    flex-grow: 1;
+    align-items: center;
+    justify-content: center;
+    height: 50px;
+    border-radius: 3px;
+    background-color: #eee;
   }
 }
 

@@ -1,13 +1,12 @@
 import React from 'react'
 
 const ListView = ({ mode, loading, children }) => {
-  let classes = `${loading ? 'loading' : ''} flex-${mode}`
-  let items = <div className={classes}>{children}</div>
-  let empty = <div className="empty-list"><div>No Results.</div></div>
-  let content = children.length > 0 ? items : empty
+  let classes = `list-view ${loading ? 'loading' : ''} flex-${mode}`
+  let empty = <div className="empty-list">No Results.</div>
+  let content = children && children.length > 0 ? children : empty
 
   return (
-    <div className="list-view">{content}</div>
+    <div className={classes}>{content}</div>
   )
 }
 
