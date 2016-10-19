@@ -74,6 +74,21 @@ module.exports = {
       template: path.resolve(__dirname, 'app', 'index.html'),
       inject: false
     }),
-    new webpack.HotModuleReplacementPlugin()
+    new webpack.NoErrorsPlugin(),
+    new webpack.HotModuleReplacementPlugin(),
+    new webpack.optimize.DedupePlugin(),
+    new webpack.optimize.OccurrenceOrderPlugin(),
+    new webpack.optimize.AggressiveMergingPlugin(),
+    new webpack.DefinePlugin({
+      'process.env': {
+        'NODE_ENV': JSON.stringify(process.env.NODE_ENV)
+      }
+    }),
+    new webpack.optimize.UglifyJsPlugin({
+      compress: { warnings: false },
+      comments: false,
+      mangle: true,
+      minimize: true,
+    }),
   ]
 }
