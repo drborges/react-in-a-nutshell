@@ -8,7 +8,7 @@ var HtmlWebpackPlugin = require('html-webpack-plugin')
   , ifProduction = process.env.NODE_ENV == 'production'
 
 module.exports = {
-  entry: ['babel-polyfill', './app/index.js'],
+  entry: ['babel-polyfill', './app/index.jsx'],
   output: {
     path: './public',
     filename: 'bundle.js'

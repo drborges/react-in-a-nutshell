@@ -132,7 +132,7 @@ h1 {
     min-height: 110px;
   }
 
-  .flex-grid .repo-info-view {
+  .flex-grid > * {
     width: 250px;
   }
 }
